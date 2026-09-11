@@ -33,6 +33,7 @@ int main(void) {
         _delay_ms(500);
         
         // Example 4: Quick burst of steps
+        stepper_set_direction(STEPPER_DIR_CW);
         for (int i = 0; i < 100; i++) {
             stepper_step();
             _delay_us(200);  // Fast stepping

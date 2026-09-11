@@ -79,6 +79,11 @@ void stepper_move_steps(uint16_t steps, uint16_t delay_us) {
 
 // Move a specific number of revolutions at given RPM
 void stepper_move_revolutions(uint8_t revolutions, uint16_t rpm) {
+    // Voorkom deling door nul als rpm = 0 wordt meegegeven
+    if (rpm == 0) {
+        return;
+    }
+
     // Calculate delay between steps for desired RPM
     // delay_us = (60 * 1000000) / (rpm * steps_per_rev)
     uint32_t delay_us = 60000000UL / ((uint32_t)rpm * STEPS_PER_REV);
